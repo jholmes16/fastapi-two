@@ -21,7 +21,7 @@ router = APIRouter(
 def get_all_blogs(page = 1, page_size: Optional[int] = None):
     return {'message': f'All {page_size} blogs on page {page}'}
 
-@router.get('/{id}/comments/{comment_id}', tags = ['comment'])
+@router.get('/{id}/comments/{comment_id}', tags = ['comment'], summary = 'Retrieve a blog comment',)
 def get_comments(id : int, comment_id: int, valid: bool = True, username: Optional[str] = None):
     """
     This is for retrieving a comment of a blog
@@ -38,11 +38,11 @@ class BlogType(str, Enum):
     story = 'story'
     howto = 'howto'
 
-@router.get('/type/{type}')
+@router.get('/type/{type}', summary = 'Retrieve the type of blog',)
 def get_blog_type(type: BlogType):
     return {'message': f'Blog type {type}'}
 
-@router.get('/{id}', status_code= status.HTTP_200_OK)
+@router.get('/{id}', status_code= status.HTTP_200_OK, summary = 'Retrieve a blog by blog ID')
 def get_blog(id: int, response: Response):
     if id > 5:
         response.status_code = status.HTTP_404_NOT_FOUND
