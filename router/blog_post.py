@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 from fastapi import APIRouter, Query, Body
 from pydantic import BaseModel
 
@@ -35,11 +35,13 @@ def create_comment(
             min_length=10,
             max_length=50,
             regex='^[a-z\s]*$'
-        )
+        ),
+        v: Optional[List[str]] = Query(['1.0', '1.1', '1.2'])
     ):
     return {
         'blog': blog,
         'id': id,
         'comment_id': comment_id,
-        'content': content
+        'content': content,
+        'version': v
     }
