@@ -1,5 +1,3 @@
-import email
-from site import USER_BASE
 from sqlalchemy.orm.session import Session
 from db.hash import Hash
 from schemas import UserBase
@@ -15,3 +13,9 @@ def create_user(db: Session, request: UserBase):
   db.commit()
   db.refresh(new_user)
   return new_user
+
+def get_all_users(db: Session):
+  return db.query(DbUser).all()
+
+def get_user(db: Session, id: int):
+  return db.query(DbUser).filter(DbUser.id == id).first()
