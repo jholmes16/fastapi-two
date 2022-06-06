@@ -1,0 +1,1 @@
+{"id":"0ddaefd2-ae2a-4429-8645-d3fde54a70e8","space":24297,"runtime":"python3.9","name":"fastapi-Two","path":"pwgwkw","project":"b0w928q4","account":"144798365827","region":"us-east-1","deps":["fastapi","uvicorn","sqlalchemy","passlib","bcrypt","python-multipart","python-jose","aiofiles"],"envs":null,"public":true,"log_level":"off","cron":""}
